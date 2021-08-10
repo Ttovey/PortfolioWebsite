@@ -14,14 +14,13 @@ app.config['MAIL_USERNAME'] = os.environ.get('gmail_user')
 app.config['MAIL_PASSWORD'] = os.environ.get('gmail_pass')
 
 
-
 mail = Mail(app)
 
 
 def send_email(content, email):
     msg = Message('Personal Website Message',
-                   sender='tannertovey7@gmail.com',
-                   recipients=['tannertovey@yahoo.com'])
+                   sender='Personal Website Admin',
+                   recipients=[os.environ.get('gmail_user')])
     msg.body = f'From: {email}, {content}'
     mail.send(msg)
 
