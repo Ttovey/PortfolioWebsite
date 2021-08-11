@@ -1,9 +1,14 @@
+* {
+  margin: 0;
+}
+
 .content-section {
   background: #ffffff;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
   body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
@@ -56,3 +61,9 @@ body, html {
   }
 }
 a { color: inherit; } 
+
+.content {
+  padding-top: 40px;
+  min-height: calc(100vh - 120px);
+  /* 80px header + 40px footer = 120px  */
+}
