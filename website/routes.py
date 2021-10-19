@@ -101,7 +101,7 @@ def new_blog():
 def medias():
     page = request.args.get('page', 1, type=int)
     medias = Media.query.order_by(
-        Media.date_posted.desc()).paginate(page=page, per_page=20)
+        Media.date_posted.desc()).paginate(page=page, per_page=8)
     return render_template('medias.html', title='Media', medias=medias)
 
 
