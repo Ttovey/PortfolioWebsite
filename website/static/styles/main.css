@@ -10,6 +10,10 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+.white {
+  color: #ce9a9a;
+  margin-bottom: 150px;
+}
 
   body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -20,10 +24,13 @@ body, html {
 
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2, .bgimg-3 {
-  background-attachment: fixed;
+  background-attachment: fixed !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.circular--square {
+  border-radius: 50%;
 }
 
 .pimg {
@@ -36,7 +43,7 @@ body, html {
 /* First image (Logo. Full height) */
 .bgimg-1 {
   background-image: url('/static/images/background_image2.jpg');
-  min-height: 100%;
+  min-height: 100% !important;
 }
 
 /* Second image (Portfolio) */
@@ -67,3 +74,8 @@ a { color: inherit; }
   min-height: calc(100vh - 120px);
   /* 80px header + 40px footer = 120px  */
 }
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+  }
