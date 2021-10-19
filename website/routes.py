@@ -97,15 +97,15 @@ def new_blog():
     return render_template('new_post.html', title='New Post', form=form)
 
 
-@app.route('/media')
-def media():
+@app.route('/medias')
+def medias():
     page = request.args.get('page', 1, type=int)
     medias = Media.query.order_by(
         Media.date_posted.desc()).paginate(page=page, per_page=20)
-    return render_template('media.html', title='Media', medias=medias)
+    return render_template('medias.html', title='Media', medias=medias)
 
 
-@app.route('/media/new', methods=['GET', 'POST'])
+@app.route('/medias/new', methods=['GET', 'POST'])
 def new_media():
     form = NewMedia()
     if form.validate_on_submit():
@@ -116,9 +116,15 @@ def new_media():
     return render_template('new_media.html', title='New Media Post', form=form)
 
 
-@app.route('/media/<int:media_id>/delete')
+@app.route('/medias/<int:media_id>/delete', methods=['POST'])
 def delete_media(media_id):
     media = Media.query.get_or_404(media_id)
     db.session.delete(media)
     db.session.commit()
-    return redirect(url_for('media'))
+    return redirect(url_for('medias'))
+
+
+@app.route('/medias/<int:media_id>')
+def media(media_id):
+    media = Media.query.get_or_404(media_id)
+    return render_template('media.html', media=media)

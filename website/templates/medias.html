@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='content'>
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% for media in medias.items %}
+                <article class="media content-section">
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <small class="text-muted">{{ media.date_posted.strftime("%Y-%m-%d") }}</small>
+                        </div>
+                        <h2><a href='{{ url_for("media", media_id=media.id) }}'>{{ media.title }}</a></h2>
+                        <p class="article-content">{{ media.type }}</p>
+                    </div>
+                </article>
+                {% endfor %}
+                {% for page_num in medias.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if page_num %}
+                {% if medias.page == page_num %}
+                <a class='btn btn-secondary mb-4' href='{{ url_for("medias", page=page_num) }}'>{{ page_num }}</a>
+                {% else %}
+                <a class='btn btn-outline-secondary mb-4' href='{{ url_for("medias", page=page_num) }}'>{{ page_num
+                    }}</a>
+                {% endif %}
+                {% else %}
+                ...
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-md-4">
+                <div class="content-section">
+                    <small>Media page is my page for logging any sort of media I consume while in the process of
+                        becoming a
+                        software
+                        engineer, this may include talks, youtube videos, podcasts, books, etc. Basically any content I
+                        consume
+                        that
+                        helps me become a better human or a better software engineer.</small>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-light">Sort By</li>
+                        <li class="list-group-item list-group-item-light">Search Keywords</li>
+                    </ul>
+                </div>
+            </div>
+    </main>
+</div>
+{% endblock %}

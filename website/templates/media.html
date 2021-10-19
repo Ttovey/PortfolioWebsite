@@ -4,46 +4,47 @@
 <div class='content'>
     <main role="main" class="container">
         <div class="row">
-            <div class="col-md-8">
-                {% for media in medias.items %}
+            <div class="col-sm-12">
                 <article class="media content-section">
                     <div class="media-body">
                         <div class="article-metadata">
                             <small class="text-muted">{{ media.date_posted.strftime("%Y-%m-%d") }}</small>
                         </div>
-                        <h2><a href='{{ url_for("media", meida_id=media.id) }}'>{{ media.title }}</a></h2>
+                        <h2>{{ media.title }}</h2>
                         <p class="article-content">{{ media.type }}</p>
                     </div>
+                    <div>
+                        {% if current_user.is_authenticated %}
+                        <button type='button' class='btn btn-dark' data-toggle="modal"
+                            data-target="#deleteModal">Delete</button>
+                        {% endif %}
+                    </div>
                 </article>
-                {% endfor %}
-                {% for page_num in medias.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-                {% if page_num %}
-                {% if medias.page == page_num %}
-                <a class='btn btn-secondary mb-4' href='{{ url_for("media", page=page_num) }}'>{{ page_num }}</a>
-                {% else %}
-                <a class='btn btn-outline-secondary mb-4' href='{{ url_for("media", page=page_num) }}'>{{ page_num
-                    }}</a>
-                {% endif %}
-                {% else %}
-                ...
-                {% endif %}
-                {% endfor %}
             </div>
-            <div class="col-md-4">
-                <div class="content-section">
-                    <small>Media page is my page for logging any sort of media I consume while in the process of
-                        becoming a
-                        software
-                        engineer, this may include talks, youtube videos, podcasts, books, etc. Basically any content I
-                        consume
-                        that
-                        helps me become a better human or a better software engineer.</small>
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-light">Sort By</li>
-                        <li class="list-group-item list-group-item-light">Search Keywords</li>
-                    </ul>
-                </div>
-            </div>
+        </div>
     </main>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Media - {{ media.title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this media?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="{{ url_for('delete_media', media_id=media.id) }}" method='POST'>
+                    <input type='submit' class='btn btn-danger' value='Delete'>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

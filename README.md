@@ -2,8 +2,15 @@
 <p>Personal website using Flask.</p>
 <p>Things to add...
 <ul>
-  <li>Personal Blog</li>
-  <li>Media Consumed: books, podcasts, video content, etc</li>
+  <li>Search Functionality for blog and media</li>
+  <li>Sort by Functionality for blog and media</li>
+  <li>Add Blueprints to Seperate Media and Blog</li>
+</ul>
+If you would like to use website as a template you may copy to your local machine...
+<ul>
+  <li>Open Git Bash</li>
+  <li>Change current directory to location you would like cloned repo</li>
+  <li>$ git clone https://github.com/Ttovey/PortfolioWebsite</li>
 </ul>
 </p>
-<p>If you would like to use this website you must change the email environ variables, change the images located in the static/images file, name in the title along with the personal links at the footer in base.html , lastly customize the about me, projects, and name/title in index.html.</p>
+
