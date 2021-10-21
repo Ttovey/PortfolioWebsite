@@ -8,9 +8,7 @@
 </ul>
 If you would like to use website as a template you may copy to your local machine...
 <ul>
-  <li>Open Git Bash</li>
-  <li>Change current directory to location you would like cloned repo</li>
-  <li>$ git clone https://github.com/Ttovey/PortfolioWebsite</li>
+  <li><code>$ git clone https://github.com/Ttovey/PortfolioWebsite</code></li>
 </ul>
 </p>
 
