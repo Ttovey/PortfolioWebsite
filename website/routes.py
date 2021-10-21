@@ -112,7 +112,7 @@ def new_media():
         media = Media(title=form.title.data, type=form.type.data)
         db.session.add(media)
         db.session.commit()
-        return redirect(url_for('media'))
+        return redirect(url_for('medias'))
     return render_template('new_media.html', title='New Media Post', form=form)
 
 
