@@ -13,6 +13,7 @@ If you would like to use website as a template you may copy to your local machin
   <li>Create virtual environment (windows using bash)<code>python -m venv env</code></li>
   <li>Start virtual environment<code>source env/Scripts/activate</code></li>
   <li>Download requirements.txt<code>pip install -r requirements.txt</code></li>
+  <li>Run the application.py file</li>
 </ul>
 </p>
 
